@@ -7,6 +7,7 @@
             <template slot="title"><i class="el-icon-message"></i>工作需求实例</template>
             <el-menu-item-group title="CSS类">
               <el-menu-item index="/css/dataTable">DataTable样式</el-menu-item>
+              <el-menu-item index="/css/dataTable-csc">DataTable方案一</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>

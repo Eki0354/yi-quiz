@@ -14,6 +14,11 @@ const routes = [
         path: '/css/dataTable',
         name: 'CSS-DataTable',
         component: () => import('../views/css/dataTable.vue')
+      },
+      {
+        path: '/css/dataTable-csc',
+        name: 'CSC-DataTable',
+        component: () => import('../views/css/dataTable-csc.vue')
       }
     ]
   }
