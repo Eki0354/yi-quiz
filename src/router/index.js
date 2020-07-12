@@ -11,19 +11,19 @@ const routes = [
     component: MainLayout,
     children: [
       {
-        path: '/css',
-        name: 'CSS',
-        children: [
-          {
-            path: '/dataTable',
-            name: 'DataTable',
-            component: import('../views/css/dataTable.vue')
-          }
-        ]
+        path: '/css/dataTable',
+        name: 'CSS-DataTable',
+        component: () => import('../views/css/dataTable.vue')
       }
     ]
   }
 ]
+
+// 屏蔽同一路由多次跳转报错
+const VueRouterPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push (to) {
+  return VueRouterPush.call(this, to).catch(() => {})
+}
 
 const router = new VueRouter({
   mode: 'history',

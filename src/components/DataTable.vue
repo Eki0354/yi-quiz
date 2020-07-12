@@ -1,5 +1,5 @@
 <template>
-  <div class="data-table">
+  <div>
     <div style="margin-bottom: 10px;" v-if="toolMenuFlag">
       <div v-if="headTitleFlag" style="text-align: center;font-size: 16px;color: #6e778f;clear: both;margin-bottom: 4px;font-weight: bold;">
         <span>{{headTitle}}</span>
