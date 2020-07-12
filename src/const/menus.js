@@ -1,22 +1,27 @@
 export default [
   {
-    id: 0,
+    id: '1',
     title: '工作需求实例',
     icon: 'el-icon-message',
     data: [
       {
-        id: 10001,
+        id: '10001',
         title: 'CSS',
-        menus: [
+        data: [
           {
-            id: 100010001,
+            id: '100010001',
             title: 'DataTable',
             path: '/css/dataTable',
             answers: [
               {
-                id: 1000100010001,
+                id: '1000100010001',
+                title: 'csc',
+                path: '/css/answers/csc'
+              },
+              {
+                id: '1000100010002',
                 title: 'eki',
-                path: ''
+                path: '/css/answers/eki'
               }
             ]
           }
