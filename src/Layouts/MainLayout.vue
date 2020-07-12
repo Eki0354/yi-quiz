@@ -2,13 +2,8 @@
   <div>
     <el-container style="border: 1px solid #eee">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :default-openeds="['1']" router>
-          <el-submenu index="1">
-            <template slot="title"><i class="el-icon-message"></i>工作需求实例</template>
-            <el-menu-item-group title="CSS类">
-              <el-menu-item index="/css/dataTable">DataTable样式</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
+        <el-menu :default-openeds="[]" router>
+          <menu-item-group :item="item" v-for="item in menus" :key="item.id"></menu-item-group>
         </el-menu>
       </el-aside>
       <el-container>
@@ -19,7 +14,19 @@
 </template>
 
 <script>
+import MenuItemGroup from '../components/MenuItemGroup'
+import menus from '../const/menus'
+
 export default {
+  components: {
+    MenuItemGroup
+  },
+
+  data () {
+    return {
+      menus
+    }
+  }
 }
 </script>
 
