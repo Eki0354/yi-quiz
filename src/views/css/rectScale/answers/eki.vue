@@ -5,7 +5,7 @@
 <script>
 export default {
   mounted () {
-    const canvas = document.getElementById('canvas')
+    const canvas = document.getElementById('canvas-eki')
     const context = canvas.getContext('2d')
     // 方框的绘图坐标
     const rect = [100, 100, 200, 200]

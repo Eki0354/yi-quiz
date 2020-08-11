@@ -34,7 +34,7 @@ const routes = [
         component: () => import('../views/css/rectScale/index.vue')
       },
       {
-        path: '/css/rectScale',
+        path: '/css/rectScale/answers/eki',
         name: 'CSS-RectScale-Eki',
         component: () => import('../views/css/rectScale/answers/eki.vue')
       }
