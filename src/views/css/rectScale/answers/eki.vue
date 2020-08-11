@@ -9,6 +9,7 @@ export default {
     const context = canvas.getContext('2d')
     // 方框的绘图坐标
     const rect = [100, 100, 200, 200]
+    const rectTarget = [...rect]
     // 四个角的绘图坐标
     let corners = []
     // 角的边长
@@ -23,6 +24,20 @@ export default {
     // 鼠标按下时的初始位置
     let initX = 0
     let initY = 0
+    // 重绘延迟时间
+    const delay = 50
+    // 毫秒每帧，控制渲染频率
+    const tpf = 15
+    // 标识是否仍处于重绘阶段
+    let isRenderring = false
+    const minSpeed = 1
+    const maxSpeed = 3
+    let speed = 0
+    // 加速度
+    const acceleration = 0.1
+    let renderTimer = null
+
+    // 绑定事件，鼠标离开canvas后无意义，所以不绑在window上
     canvas.onmousedown = onmousedown
     canvas.onmousemove = onmousemove
     canvas.onmouseup = onmouseup
@@ -58,6 +73,23 @@ export default {
       ]
     }
 
+    // 开启循环渲染
+    function startRender () {
+      if (renderTimer || isRenderring) return
+      isRenderring = true
+      setTimeout(() => {
+        renderTimer = setInterval(() => initRect() ? render() : stopRender(), tpf)
+      }, delay - tpf)
+    }
+
+    // 停止循环渲染
+    function stopRender () {
+      clearInterval(renderTimer)
+      renderTimer = null
+      isRenderring = false
+      speed = 0
+    }
+
     // 主渲染函数
     function render () {
       context.clearRect(0, 0, canvas.width, canvas.height)
@@ -65,6 +97,32 @@ export default {
       drawRect()
       getCornerCoords()
       drawCorner()
+    }
+
+    // 动态刷新方框参数
+    function initRect () {
+      // 当前参数与目标参数已匹配，返回false停止渲染
+      if (rect.every((v, i) => v === rectTarget[i])) return false
+      // 否则进行动态计算
+
+      // 自由落体，初始速度为0，可用于判断
+      speed < maxSpeed && (speed += (speed ? minSpeed : acceleration))
+      rect.forEach((v, i) => {
+        if (v < rectTarget[i]) {
+          if (v + speed < rectTarget[i]) {
+            rect[i] += speed
+          } else {
+            rect[i] = rectTarget[i]
+          }
+        } else if (v > rectTarget[i]) {
+          if (v - speed > rectTarget[i]) {
+            rect[i] -= speed
+          } else {
+            rect[i] = rectTarget[i]
+          }
+        }
+      })
+      return true
     }
 
     function drawBg () {
@@ -103,37 +161,38 @@ export default {
       const y = e.layerY
       const mX = x - initX
       const mY = y - initY
+      initX = x
+      initY = y
       if (isScale) {
         switch (scaleIndex) {
           case 1:
-            rect[0] += mX
-            rect[1] += mY
-            rect[2] -= mX
-            rect[3] -= mY
+            rectTarget[0] += mX
+            rectTarget[1] += mY
+            rectTarget[2] -= mX
+            rectTarget[3] -= mY
             break
           case 2:
-            rect[2] += mX
-            rect[1] += mY
-            rect[3] -= mY
+            rectTarget[2] += mX
+            rectTarget[1] += mY
+            rectTarget[3] -= mY
             break
           case 3:
-            rect[0] += mX
-            rect[2] -= mX
-            rect[3] += mY
+            rectTarget[0] += mX
+            rectTarget[2] -= mX
+            rectTarget[3] += mY
             break
           case 4:
-            rect[2] += mX
-            rect[3] += mY
+            rectTarget[2] += mX
+            rectTarget[3] += mY
             break
         }
+        startRender()
       }
       if (isDrag) {
         rect[0] += mX
         rect[1] += mY
+        render()
       }
-      initX = x
-      initY = y
-      render()
     }
 
     function onmouseup (e) {
