@@ -127,7 +127,7 @@ export default {
 
     function drawBg () {
       context.fillStyle = 'rgba(0, 0, 0, .1)'
-      context.fillRect(0, 0, 500, 400)
+      context.fillRect(0, 0, canvas.width, canvas.height)
     }
 
     function drawRect () {
