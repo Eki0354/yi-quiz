@@ -10,20 +10,33 @@ const routes = [
     name: 'MainLayout',
     component: MainLayout,
     children: [
+      // dataTable
       {
         path: '/css/dataTable',
         name: 'CSS-DataTable',
-        component: () => import('../views/css/dataTable.vue')
+        component: () => import('../views/css/dataTable/index.vue')
       },
       {
-        path: '/css/answers/csc',
-        name: 'CSC-DataTable',
-        component: () => import('../views/css/answers/csc.vue')
+        path: '/css/dataTable/answers/csc',
+        name: 'CSS-DataTable-CSC',
+        component: () => import('../views/css/dataTable/answers/csc.vue')
       },
       {
-        path: '/css/answers/eki',
-        name: 'Eki-DataTable',
-        component: () => import('../views/css/answers/eki.vue')
+        path: '/css/dataTable/answers/eki',
+        name: 'CSS-DataTable-Eki',
+        component: () => import('../views/css/dataTable/answers/eki.vue')
+      },
+
+      // rectScale
+      {
+        path: '/css/rectScale',
+        name: 'CSS-RectScale',
+        component: () => import('../views/css/rectScale/index.vue')
+      },
+      {
+        path: '/css/rectScale',
+        name: 'CSS-RectScale-Eki',
+        component: () => import('../views/css/rectScale/answers/eki.vue')
       }
     ]
   }

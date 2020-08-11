@@ -1,6 +1,23 @@
 <template>
   <div class="data-table">
+    <h5>说明：</h5>
+    <p>
+      1. 表单在无数据（绑定数据对象为空数组）时，默认显示“暂无数据”的提示信息
+    </p>
+    <p>
+      2. 提示信息以表单总宽度计算，始终在居中位置（x和y方向）
+    </p>
+    <h5>要求：</h5>
+    <p>
+      1. 实现提示信息以表单可视宽度（即当前可见宽度）计算，始终在居中位置
+    </p>
+    <p>
+      2. 仅更改CSS样式
+    </p>
     <data-table :sourceData.sync="sourceData" :columns="columns"></data-table>
+    <br>
+    <h5>示例图：</h5>
+    <img style="width: 100%;" :src="require('../../../assets/css/dataTable/temp.gif')" alt="">
   </div>
 </template>
 
@@ -86,15 +103,6 @@ export default {
         background-color: #ddd;
       }
     }
-  }
-}
-
-/deep/ .el-table__empty-block {
-  justify-content: inherit;
-  /deep/ .el-table__empty-text {
-    position: sticky;
-    left: 50%;
-    width: 60px;
   }
 }
 </style>

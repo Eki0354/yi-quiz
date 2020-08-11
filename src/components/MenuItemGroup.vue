@@ -4,7 +4,7 @@
     <el-menu-item-group :title="type.title" v-for="type in item.data" :key="type.id">
       <el-submenu :index="menu.id" :key="menu.id" v-for="menu in type.data">
         <template slot="title"><i :class="menu.icon"></i>{{menu.title}}</template>
-        <template v-for="menu in type.data">
+        <template>
           <el-menu-item :index="menu.path" :key="menu.id">
             <i class="el-icon-question"></i>
             <span slot="title">原题</span>
@@ -35,7 +35,6 @@ export default {
 
   methods: {
     hasAnswers (item) {
-      console.log(item)
       return item.answers && item.answers.length > 0
     }
   }

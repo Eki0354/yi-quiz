@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import DataTable from '../../../components/DataTable'
+import DataTable from '../../../../components/DataTable'
 
 export default {
   components: {
@@ -86,19 +86,15 @@ export default {
         background-color: #ddd;
       }
     }
+  }
+}
 
-    // 完成题目需要的样式代码
-    /deep/ .el-table__body-wrapper {
-      position: static;
-
-      .el-table__empty-text {
-        position: absolute;
-        left: 0;
-        right: 0;
-        width: 100%;
-        text-align: center;
-      }
-    }
+/deep/ .el-table__empty-block {
+  justify-content: inherit;
+  /deep/ .el-table__empty-text {
+    position: sticky;
+    left: 50%;
+    width: 60px;
   }
 }
 </style>

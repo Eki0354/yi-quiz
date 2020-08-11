@@ -6,7 +6,7 @@
           <menu-item-group :item="item" v-for="item in menus" :key="item.id"></menu-item-group>
         </el-menu>
       </el-aside>
-      <el-container>
+      <el-container class="container-main">
         <router-view />
       </el-container>
     </el-container>
@@ -39,5 +39,9 @@ export default {
   background-color: #B3C0D1;
   color: #333;
   line-height: 60px;
+}
+
+.container-main {
+  padding: 20px;
 }
 </style>
