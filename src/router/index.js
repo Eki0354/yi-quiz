@@ -1,6 +1,33 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MainLayout from '../Layouts/MainLayout.vue'
+import menus from '../const/menus'
+
+function toRouter (menus) {
+  const res = []
+  if (!menus || !menus.length) return res
+  for (const category of menus) {
+    // if (category.id.length < 3 || !category.data || !category.data.length) continue
+    for (const subCategory of category.data) {
+      for (const quiz of subCategory.data) {
+        res.push({
+          name: `${category.title}-${quiz.title}`,
+          path: quiz.path,
+          component: () => import('../views' + quiz.path + '/index.vue')
+        })
+        if (!quiz.answers || !quiz.answers.length) break
+        quiz.answers.forEach(a => {
+          res.push({
+            name: `${category.title}-${quiz.title}-${a.title}`,
+            path: a.path,
+            component: () => import('../views' + a.path + '/index.vue')
+          })
+        })
+      }
+    }
+  }
+  return res
+}
 
 Vue.use(VueRouter)
 
@@ -9,36 +36,7 @@ const routes = [
     path: '/',
     name: 'MainLayout',
     component: MainLayout,
-    children: [
-      // dataTable
-      {
-        path: '/css/dataTable',
-        name: 'CSS-DataTable',
-        component: () => import('../views/css/dataTable/index.vue')
-      },
-      {
-        path: '/css/dataTable/answers/csc',
-        name: 'CSS-DataTable-CSC',
-        component: () => import('../views/css/dataTable/answers/csc.vue')
-      },
-      {
-        path: '/css/dataTable/answers/eki',
-        name: 'CSS-DataTable-Eki',
-        component: () => import('../views/css/dataTable/answers/eki.vue')
-      },
-
-      // rectScale
-      {
-        path: '/css/rectScale',
-        name: 'CSS-RectScale',
-        component: () => import('../views/css/rectScale/index.vue')
-      },
-      {
-        path: '/css/rectScale/answers/eki',
-        name: 'CSS-RectScale-Eki',
-        component: () => import('../views/css/rectScale/answers/eki.vue')
-      }
-    ]
+    children: toRouter(menus)
   }
 ]
 

@@ -28,12 +28,30 @@ export default [
           {
             id: '100010002',
             title: 'Scalable Rectangle',
-            path: '/css/rectScale',
+            path: '/canvas/rectScale',
             answers: [
               {
                 id: '1000100020001',
                 title: 'eki',
-                path: '/css/rectScale/answers/eki'
+                path: '/canvas/rectScale/answers/eki'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: '20001',
+        title: 'Echarts',
+        data: [
+          {
+            id: '200010001',
+            title: 'Yearline',
+            path: '/echarts/yearline',
+            answers: [
+              {
+                id: '2000100010001',
+                title: 'eki',
+                path: '/echarts/yearline/answers/eki'
               }
             ]
           }
