@@ -17,12 +17,12 @@
     <data-table :sourceData.sync="sourceData" :columns="columns"></data-table>
     <br>
     <h5>示例图：</h5>
-    <img style="width: 100%;" :src="require('../../../assets/css/dataTable/temp.gif')" alt="">
+    <img style="width: 100%;" :src="require('@/assets/css/dataTable/temp.gif')" alt="">
   </div>
 </template>
 
 <script>
-import DataTable from '../../../components/DataTable'
+import DataTable from '@/components/DataTable'
 
 export default {
   components: {

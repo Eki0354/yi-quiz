@@ -10,7 +10,7 @@
     <p>3. 阶段性数据可以限制范围（请注意阶段性跳转有可能越过范围）；</p>
     <p>4. 可以画一个空的echarts图，呈现出此组件所需效果即可；</p>
     <h5>效果图：</h5>（如果不好理解请参考本题 [答案>eki] 页面）
-    <img style="width: 100%;" :src="require('../../../assets/echarts/yearline/yearline.gif')" alt="">
+    <img style="width: 100%;" :src="require('@/assets/echarts/yearline/yearline.gif')" alt="">
 
     <h5>加强需求：</h5>
     <p>将以上功能提取成单独组件、混入、继承或者任何合适的形式，使其可自定义且方便地使用在任一页面的任一echarts对象上</p>

@@ -15,7 +15,7 @@
 
 <script>
 import MenuItemGroup from '../components/MenuItemGroup'
-import menus from '../const/menus'
+import menus from '../router/menus'
 
 export default {
   components: {

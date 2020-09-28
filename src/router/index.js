@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MainLayout from '../Layouts/MainLayout.vue'
-import menus from '../const/menus'
+import menus from './menus'
 
 function toRouter (menus) {
   const res = []
