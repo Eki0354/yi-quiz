@@ -3,6 +3,10 @@ function getMenus () {
     workCases: {
       title: '工作需求实例',
       icon: 'el-icon-message'
+    },
+    demoGames: {
+      title: 'Demo小游戏',
+      icon: 'el-icon-message'
     }
   }
   const menuTree = []
