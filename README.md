@@ -1,24 +1,20 @@
 # demo-quiz
 
-## Project setup
-```
-npm install
-```
+本项目旨在总结实际编程中遇到的各种难题和奇技淫巧，分享学习，请勿用作商业用途。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 使用说明
 
-### Compiles and minifies for production
-```
-npm run build
-```
+为最简化使用方式和快捷应用，左侧菜单栏为自动读取文件目录结构而生成，所以需要添加新题目或个人解答时请遵守相关目录规则。
 
-### Lints and fixes files
-```
-npm run lint
-```
+例：
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+——views                                                               所有题目页面组件目录
+————workCases                                              问题来源或出发点分类文件夹暨名称（工作项目实例、demo等）
+——————css                                                    技术分类文件夹暨名称（css、js、组件库等）
+————————dataTable                                问题文件夹暨名称（最好全英文）
+——————————index.vue                 问题页面组件（其他要引入的文件或组件可以在这个目录下随意发挥）
+——————————answers                           个人解答页面组件文件夹
+————————————eki                             个人组件文件夹暨名称
+——————————————index.vue         个人解答页面主组件，其他可自由发挥
+
+对应上述文件夹和主要文件作用，即可自由添加问题和个人解答。
